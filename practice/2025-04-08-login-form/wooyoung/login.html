@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="login-form">
+        <img class="mypiano" src="/sF6MfKvC_3Q3MzsU__6n0zCq_X58BMT3Im_cCF_xZY1WO5zB-NDkG53zHy_OTTqmqHIB4d-l-ou3_-eMu1fvAg.svg" alt="">
+        <h1>My Sweet Piano</h1>
+        <form action="main.html" method="get">
+            <div class="int-area">
+                <!-- autocomplete="off"	브라우저의 자동완성 기능을 끔
+                required	입력을 반드시 해야 하는 필드로 만들어줌 (빈칸이면 제출 불가) -->
+                <input type="text" name="id" id="id" autocomplete="off" required>
+                <label for="id">USER NAME</label>
+            </div>
+            <div class="int-area">
+                <input type="password" name="pw" id="pw" autocomplete="off" required>
+                <label for="pw">PASSWORD</label>
+            </div>
+            <div class="btn-area">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+        <div class="caption">
+            <a href="">Forgot password?</a>
+        </div>
+    </section>    
+</body>
+</html>

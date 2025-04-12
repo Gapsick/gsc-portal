@@ -1,0 +1,97 @@
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* **100vh**는 화면(뷰포트) 높이의 100%, 즉 보이는 화면 전체 높이만큼 차지 */
+    height: 100vh;
+    background-image: url(/IMG_8106.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* 이미지 깨지지 않게 */
+    background-size: contain; 
+}
+body::before{
+    content: "";
+    /* absolute는 기본적으로 가장 가까운 position: relative를 가진 조상 요소를 기준으로 위치함. */
+    position: absolute; z-index: 1;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(255, 220, 240, 0.4);
+}
+
+.login-form{position: relative; z-index: 2;}
+.login-form h1{
+    font-size: 32px; color: white;
+    text-align: center;
+    margin-bottom: 100px;
+    background-color: pink;
+    padding: 10px;
+    border-radius: 10px;
+}
+.int-area{
+    width: 400px;
+    position: relative;
+    margin-top: 15px;
+}
+
+.int-area:first-child{margin-top: 0;}
+
+.int-area input{
+    width: 100%;
+    padding: 20px 10px 10px;
+    /* 투명한 배경을 설정함 */
+    background-color: transparent;
+    border: none;
+    border-bottom: 1.5px solid black;
+    font-size: 18px; 
+}
+
+.int-area label{
+    position: absolute; 
+    left: 10px;
+    top: 6px;
+    font-size: 14px; color: black;
+    /* cubic-bezier 커스텀 (아주 부드럽게 시작해서 자연스럽게 멈춤) */
+    transition: top 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 사용자가 input에 포커스했을 때 */
+.int-area input:focus + label,
+/* input에 값이 들어있을 때  */
+.int-area input:valid + label {
+    top: 0;
+    font-size: 13px; color: palevioletred;
+}
+
+.btn-area {
+    margin-top: 30px;
+}
+
+.btn-area button {
+    width: 100%;
+    height: 50px;
+    background-color: pink;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    /* *마우스를 올렸을 때 커서를 손가락 모양(🔗 링크처럼)**으로 바꿔주는 속성입니다 */
+    cursor: pointer;
+}
+.caption {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.caption a{
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+}
+.mypiano{
+    width: 100px;
+    float: left;
+
+}
