@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 결과</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+          }
+      
+        .result-box {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+      
+        .result-box h2 {
+            margin-bottom: 20px;
+            color: steelblue;
+        }
+      
+        .result-box p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+      
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+      
+        .value {
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="result-box">
+        <h2>로그인 결과</h2>
+        <p><span class="label">아이디:</span> <span class="value" id="result-id"></span></p>
+        <p><span class="label">비밀번호:</span> <span class="value" id="result-pw"></span></p>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const userid = params.get('userid');
+        const password = params.get('password')
+
+        document.getElementById('result-id').textContent = userid;
+        document.getElementById('result-pw').textContent = password;
+    </script>
+
+</body>
+</html>
