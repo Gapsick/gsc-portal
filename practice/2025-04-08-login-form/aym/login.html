@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Back</title>
+    <style>
+        /* */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eaf1fe, #2dbfbe);
+            display: flex; /* 화면의 중안 설정을 위해  flexbox을 사용용 */
+            justify-content: center; /* 가로축 중안 */
+            align-items: center; /* 새로 축 중안 */
+            height: 100vh; /* 화면 높이 100% */ 
+            margin: 0;/* 여백 재거 */
+        }
+        /* 카드 컨테이너 스타일 */
+        .container {
+            background-color: rgb(243, 250, 250);
+            width: 400px; /* 컨테이너 너비 */
+            padding: 20px;
+            border-radius: 10px; /* 모서리를 둥글게 설정 丸角 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.277); /* 그림자자 */
+        }
+        h2{
+            color: #2dbfbe;
+            margin-bottom: 5px; /* 위의 여백을 0px로 설정 */
+        }
+        p {
+            color: #aaaaaa; /* 텍스트 색상을 회색으로 설정 */
+            font-size: 14px; /* 글자 크기를 14px로 설정 */
+            margin-top: 0px; /* 위의 여백을 0px로 설정 */
+            margin-bottom: 20px; /* 아래 여백을 20px로 설정 */
+            font-weight: bold;
+        }
+
+        /* 입력 필드와 라벨 스타일 */
+        label {
+            text-align: left; /* 텍스트를 왼쪽 정렬 */
+            font-size: 14px;
+            display: block; /* 블록 요소로 변경하여 줄바꿈 효과 적용 */
+            font-weight: bold; /* 글자 굵게 */
+            color: #444; /* 글자 색상을 어두운 회색으로 설정 */
+        }
+        input,textarea{
+            width: 50%;
+            padding: 5px 10px;
+            background-color: #69dbdb32;
+            border: 2px solid transparent;
+            margin: 2px 0px 15px 15px;
+            border-radius: 10px;
+        }:hover{
+            border-color: #69dbdb;
+            outline: none;
+        }
+        select{
+            width: 50%;
+            padding: 5px 10px;
+            background-color: #69dbdb32;
+            border: 2px solid transparent;
+            margin: 2px 0px 15px 15px;
+            border-radius: 10px;
+        }
+
+        /* 버튼 스타일 */
+        button {
+            width: 100%; /* 버튼 너비를 100%로 설정 */
+            padding: 10px; /* 내부 여백을 10px로 설정 */
+            background-color: #69dbdb; /* 버튼 배경색 */
+            color: white; /* 텍스트 색상 */
+            font-size: 16px; /* 글자 크기를 16px로 설정 */
+            border: none; /* 버튼 테두리 제거 */
+            border-radius: 10px; /* 모서리를 둥글게 설정 */
+            cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+            margin-top: 20px;  /* 위 여백을 20px로 설정 */
+            margin-bottom: 20px; /* 아래 여백을 20px로 설정 */
+        }
+
+        /* 버튼에 마우스를 올렸을 때 스타일 */
+        button:hover {
+            background-color: #2dbfbe; /* 버튼 배경색을 조금 더 어두운 청록색으로 변경 */
+        }
+
+        /* remember 글 */
+        .remember-me {
+            display: flex;  /* 스위치 옆에 배치 */
+            margin-top: 3%;
+        }
+
+        /* 스위치가 선언 된 위치를 기준으로 얼마나 색칠하는지 (스위치 크기 설정)*/
+        .remember-switch {
+            position: relative; 
+            width: 40px;
+            height: 20px;  
+            margin-right: 10px; /* 글과의 간격 */
+        }
+
+        /* 체크박스 안 보이게 span의 slider가 대체*/
+        .remember-switch input {
+            display: none;
+        }
+
+        /* remember 스위치 배경 */
+        .slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 20px; /* 모서리를 둥글게 설정 */
+            transition: background-color 0.3s; /* 색 변환 속도 */
+        }
+        /* 만약에 input이 checked가 되면 slider의 배경색을 변환 */
+        input:checked + .slider {
+            background-color: #2dbfbe;
+        }
+
+        /* 스위치 안의 원 그림 */
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            left: 2px;
+            top: 2px;
+            background-color: white;
+            border-radius: 50%; /* 모서리를 둥글게 설정 */
+            transition: transform 0.3s; /* 이동 속도 */
+        }
+        /* 만약에 input이 checked가 되면 slider::before의 원그림을 이동 */
+        input:checked + .slider::before {
+            transform: translateX(20px); /* 이동 설정 */
+        }
+
+
+        /* 'Sign Up' 링크 스타일 */
+        .sign-up {
+            font-size: 14px; /* 글자 크기를 14px로 설정 */
+            color: #444; /* 텍스트 색상을 어두운 회색으로 설정 */
+            text-align: center;
+        }
+
+        .sign-up span, a {
+            color: #2dbfbe; /* 텍스트 색상을 청록색으로 설정 */
+            font-weight: bold; /* 글자 굵기를 굵게 설정 */
+            cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+        }
+        .sign-up span:hover {
+            text-decoration: underline; /* 밑줄을 표시 */
+        }
+
+        img{
+            width: 20%;
+            margin-left: 40%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome Back</h2>
+        <p>Enter your email and password to sign in</p>
+    
+        <form id="loginForm">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Your email address" />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Your password" />
+
+            <!-- 선택 -->
+            <label for="msg">Grade</label>
+            <select name="grade" id="grade">
+                <option value="1">1학년</option>
+                <option value="2">2학년</option>
+                <option value="3">3학년</option>
+            </select>
+
+            <label for="msg">Message</label>
+            <textarea id="msg" name="msg" rows="3" placeholder="message..."></textarea>
+
+            <!-- 버튼 -->
+            <div class="remember-me">
+                <label class="remember-switch">
+                    <input type="checkbox" />
+                    <span class="slider"></span> <!-- 버튼 --> 
+                </label>
+                <span>Remember me</span>
+            </div>
+
+            <button type="submit">SIGN IN</button>
+        </form>
+    
+        <!-- 링크 -->
+        <p style="text-align:center;">
+            Need help? <a href="https://i.pinimg.com/originals/c5/1f/5a/c51f5ad5cc105c0b2cc6b278a04e4a82.gif" target="_blank">Contact us</a>
+        </p>
+    
+        <!-- 이미지  -->
+        <div>
+            <img src="https://i.pinimg.com/originals/c5/1f/5a/c51f5ad5cc105c0b2cc6b278a04e4a82.gif" alt="샘플 이미지" />
+        </div>
+    
+        <!-- 회원가입 -->
+        <div class="sign-up">
+            <p>
+            Don't have an account? <span>Sign Up</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const grade = document.getElementById("grade").value;
+        const msg = document.getElementById("msg").value;
+
+        // 쿼리 문자열로 전달
+        const query = `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&grade=${encodeURIComponent(grade)}&msg=${encodeURIComponent(msg)}`;
+        window.location.href = `test.html?${query}`;
+    });
+</script>
