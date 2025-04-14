@@ -1,0 +1,9 @@
+{
+    "code-runner.runInTerminal": true,
+"code-runner.clearPreviousOutput": true,
+"code-runner.executorMap": {
+    "php": "php"
+},
+"code-runner.ignoreSelection": true
+
+}
