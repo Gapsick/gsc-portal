@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      DB_HOST: 210.101.236.159       # MobaxTerm 서버 IP
+      DB_NAME: ss_test
+      DB_USER: ss
+      DB_PASS: 1234
+
+
+volumes:
+  db-data:
