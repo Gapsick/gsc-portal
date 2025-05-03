@@ -1,4 +1,10 @@
-<?php include "db.php"; ?>
+<?php
+include "db.php";
+include "functions.php";
+
+$rows = get_all_boards($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,22 +13,35 @@
     <title>게시판</title>
 </head>
 <body>
-<h1>게시글 목록</h1>    
+<h1>게시글 목록</h1>
 
-<?php 
-$result = mysqli_query($conn, "SELECT * FROM board ORDER BY id DESC");    
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<p>
-        <a href='view.php?id={$row['id']}'> 
-        {$row['title']} 
-        </a>
-    </p>";
-}
-?>
+<?php if (empty($rows)): ?>
+  <p>게시글이 없습니다.</p>
 
-<a href="write.php"> 글 작성 </a>
+<?php else: ?>
+  <table>
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($rows as $row): ?>
+        <tr>
+          <td><?= $row['id'] ?></td>
+          <td class="title">
+            <a href="view.php?id=<?= $row['id'] ?>">
+              <?= htmlspecialchars($row['title']) ?>
+            </a>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+<?php endif; ?>
 
-
-
+<br>
+<a href="write.php"><button>글작성</button></a>
 </body>
 </html>
