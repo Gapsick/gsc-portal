@@ -5,7 +5,7 @@ require_once("db.php"); // DB 연결 저보 불러오기
 
 $error = ""; // 에러 메시지 변수 초기화
 
-// 폼이 전송되었을 경우만 실행ㄹ (POST 방식으로 submit될 때)
+// 폼이 전송되었을 경우만 실행 (POST 방식으로 submit될 때)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // 사용자 입력값을 받아오고 앞뒤 공백 제거
     $username = trim($_POST['username'] ?? '');

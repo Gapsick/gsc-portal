@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "root123", "school_portal");
+$mysqli = new mysqli("210.101.236.159", "portaluser", "mySecurePassword!", "school_portal");
 
 $mysqli->set_charset("utf8mb4");
 

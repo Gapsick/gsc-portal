@@ -23,9 +23,9 @@ $result = $mysqli->query($sql); // 쿼리 실행 -> 결과를 $result로 저장
 <!-- 로그인 여부에 따라 UI 다르게 표시 -->
 <?php if (isset($_SESSION['user'])): ?>
     <!-- 로그인 되어 있을 경우: 사용자 이름 표시 + 글쓰기 로그아웃 버튼 -->
-  <p>👋 안녕하세요, <strong><?= htmlspecialchars($_SESSION['user']['username']) ?></strong>님!</p>
-  <a href="create.php">✏️ 글쓰기</a> |
-  <a href="logout.php">🚪 로그아웃</a>
+  <p>안녕하세요, <strong><?= htmlspecialchars($_SESSION['user']['username']) ?></strong>님!</p>
+  <a href="create.php">글쓰기</a> |
+  <a href="logout.php">로그아웃</a>
 <?php else: ?>
     <!-- 로그인 안 된 경우: 로그인/회원가입 유도 -->
   <p>로그인해주세요. <a href="login.php">로그인</a> / <a href="register.php">회원가입</a></p>

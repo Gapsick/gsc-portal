@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt = $mysqli->prepare("SELECT id FROM users WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute(); // 실행
-        $stmt->store_result(); // 결과를 메모리에 저장 
+        $stmt->store_result(); // 결과를 메모리에 저장
 
         if ($stmt->num_rows > 0) {
             $error = "이미 존재하는 사용자명입니다."; // 중복되는 아이디
