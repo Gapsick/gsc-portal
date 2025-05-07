@@ -1,0 +1,154 @@
+/* 로그인 , 회원가입 CSS */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    display: inline-block;
+    background: white;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+input[type="submit"] {
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover {
+    background-color: #5848d4;
+}
+
+a {
+    color: #6c63ff;
+    text-decoration: none;
+}
+
+/* 게시판 (board.php) CSS*/
+a:hover {
+    text-decoration: underline;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 800px;
+    background: white;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+table th, table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+table tr:hover {
+    background-color: #f9f9f9;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* 게시글용 (write.php) CSS */
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+form textarea {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+a.button-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a.button-link:hover {
+    background-color: #ccc;
+}
+
+/*  (view.php) CSS*/ 
+.view-box {
+    background: white;
+    padding: 25px;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.view-box p {
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.view-box hr {
+    margin: 20px 0;
+}
+
+.view-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+/* 수정 (edit.php) CSS */
+a.button-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background-color: #ddd;
+    color: #333;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a.button-link:hover {
+    background-color: #ccc;
+}
