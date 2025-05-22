@@ -13,7 +13,7 @@ function Verification(scoreList) {
   for (let i = 0; i < scoreList.length; i++) {
     const score = scoreList[i]; // 현재 점수
 
-    // 조건에 따라 해당 등급 배열에 추가가
+    // 조건에 따라 해당 등급 배열에 추가
     if (score >= 90) {
       result.우수.push(score);
     } else if (score >= 70) {
@@ -37,7 +37,7 @@ function calculateAverage(arr) {
     sum += arr[i];
   }
 
-  // 반환값 : 총합 / 개수수
+  // 반환값 : 총합 / 개수
   return sum / arr.length;
 }
 
