@@ -38,10 +38,32 @@ create_btn.addEventListener('click', () => {
 
     // 수정 버튼 이벤트
     editBtn.addEventListener('click', () => {
-        const newText = prompt('수정할 내용을 입력하세요', span.innerText);
-        if (newText !== null && newText.trim() !== '') {
-            span.innerText = newText.trim();
-        }
+        if (item.querySelector('input[type="text"]')) return;
+
+        // 기존 텍스트 가져오기
+        const currentText = span.innerText;
+
+        // 새로운 input 요소 만들기
+        const inputFiled = document.createElement('input');
+        inputFiled.type = 'text';
+        inputFiled.value = currentText;
+
+        // 기존 span 숨기고 input을 대신 보여주기
+        span.style.display = 'none';
+        item.insertBefore(inputFiled, editBtn); // 버튼 앞에 input 삽입
+
+        inputFiled.focus();
+
+        // 엔터 저장 후 input 제고
+        inputFiled.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                if (inputFiled.value.trim() != '') {
+                    span.innerText = inputFiled.value.trim();
+                }
+                inputFiled.remove();
+                span.style.display = 'inline';
+            }
+        })
     });
 
     // 삭제 버튼 이벤트
