@@ -35,6 +35,20 @@
       wrapper.style.alignItems = "center";
       let isEditing = false; // 수정 상태를 저장
 
+      // 체크박스 추가
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.style.marginRight = "10px";
+
+      // 체크 시 줄 긋기
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          p.style.textDecoration = "line-through";
+        } else {
+          p.style.textDecoration = "none";
+        }
+      });  
+
       // 일반 텍스트 p 태그 (기본 보임)
       const p = document.createElement("p");
       p.textContent = value;
@@ -106,6 +120,7 @@
       }
 
       // 요소들 추가
+      wrapper.appendChild(checkbox);
       wrapper.appendChild(p);
       wrapper.appendChild(input);
       wrapper.appendChild(editBtn);
