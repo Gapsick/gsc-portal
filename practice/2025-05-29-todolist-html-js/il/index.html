@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do List</title>
+    <style>
+    .completed {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+
+  <!-- 사용자가 입력할 form과 submit 버튼-->
+  <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="할 일을 입력하세요" />
+    <button type="submit">추가</button>
+  </form>
+
+  <!-- 할 일 목록이 표시될 영역-->
+  <ul id="todo-list"></ul>
+
+  <script>
+    // 사용자가 입력한 form 의 정보를 JavaScript 에서 사용할 수 있도록 변수에 저장
+    const form = document.getElementById("todo-form"); // form (입력창 + 버튼)
+    const input = document.getElementById("todo-input"); // 입력창
+    const todolist = document.getElementById("todo-list"); // 할 일을 담을 ul 
+
+    // form 이 제출될 때 실행되는 이벤트 핸들러
+    form.addEventListener("submit", (event) => {
+        event.preventDefault(); // form 기본 동작 ( 새로고침 )을 막음
+
+        const text = input.value.trim(); // 입력 값에서 양쪽 공백 제거
+
+        if (text == "") {
+            alert("입력 하세요!!!!!!"); // 빈 값을 등록할 때 알림 표시
+            return; // 함수 실행 중단
+        }
+
+        createTodoItem(text); // createTodoItem 함수 실행 
+        input.value = ""; // createTodoItem 함수 실행 후 -> 입력창 초기화
+    });
+
+    // 생성 함수
+    // createTodoItem 함수
+    const createTodoItem = (text) => {
+        const li = document.createElement("li"); // il 요소 생성
+        const checkbox = document.createElement("input"); // 체크 박스 생성
+        checkbox.type = "checkbox";
+
+        const span = document.createElement("span"); // span 요소 생성
+        span.textContent = text; // span 요소 안에 textcontent에 text 내용을 담는다.
+
+        const editBtn = document.createElement("button"); // 수정 버튼 생성
+        editBtn.textContent = "수정";
+
+        const deleteBtn = document.createElement("button"); // 삭제 버튼 생성
+        deleteBtn.textContent = "삭제";
+
+        // 체크 박스 변경 이벤트 등록
+        // 체크 되면 취소선 추가하고, 해제하면 취소선 제거거
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                span.classList.add("completed");  // 취소선 추가
+            } else {
+                span.classList.remove("completed"); // 취소선 제거
+            }
+        });
+
+        // 수정 버튼 함수
+        // 수정 버튼 클릭 시 수정 입력창, 확인/취소 버튼으로 전환
+        editBtn.addEventListener("click", () => {
+            const editInput = document.createElement("input"); // 수정용 input 필드 생성
+            editInput.value = span.textContent; // editInput 값의 기본값은 기존 텍스트로 생성
+
+            const confirmBtn = document.createElement("button"); // 수정후 확인 버튼 생성
+            confirmBtn.textContent = "확인"
+
+            const cancelBtn = document.createElement("button"); // 수정 취소 버튼 생성성
+            cancelBtn.textContent = "취소"
+
+            // 확인 버튼 클릭시 -> 수정 내용 반영 후 원래 상태로 복귀
+            confirmBtn.addEventListener("click", () => {
+                span.textContent = editInput.value; // 수정된 텍스트 반영
+                li.replaceChild(span, editInput); // editInput -> span 교체
+                li.replaceChild(editBtn, confirmBtn); // 확인 -> 수정 버튼으로 교체
+                li.replaceChild(deleteBtn, cancelBtn); // 취소 -> 삭제 버튼으로 교체체
+            });
+
+            // 취소 버튼 클릭 -> 아무런 변경 없이 원래 상태로 복귀
+            cancelBtn.addEventListener("click", () => {
+                li.replaceChild(span, editInput); // input -> span
+                li.replaceChild(editBtn, confirmBtn); // 확인 -> 수정 버튼으로 교체
+                li.replaceChild(deleteBtn, cancelBtn); // 취소 -> 삭제 버튼으로 교체체
+            });
+
+            // 수정모드로 전환: 기존 요소를 수정용 요소로 교체
+            li.replaceChild(editInput, span);
+            li.replaceChild(confirmBtn, editBtn);
+            li.replaceChild(cancelBtn, deleteBtn);
+        });
+
+        // 삭제 버튼 함수
+        // 삭제 버튼 클릭 시 해당 항목을 리스트에서 제거
+        deleteBtn.addEventListener("click", () =>{
+            todolist.removeChild(li); // ul에서 li 항목 제거
+        });
+
+        // li 항목에 요소들을 순서대로 추가한다.
+        li.appendChild(checkbox); // 체크박스
+        li.appendChild(span); // 텍스트
+        li.appendChild(editBtn); // 수정 버튼
+        li.appendChild(deleteBtn); // 삭제 버튼
+
+        // 최종적으로 ul에 이 li 한목을 추가하여 화면에 표시
+        todolist.appendChild(li);      
+    };
+  </script>
+</body>
+</html>
